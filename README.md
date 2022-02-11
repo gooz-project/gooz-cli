@@ -15,35 +15,26 @@ Using CMD, PowerShell or Bash Terminal
 ampy --help
 ```
 ## Gooz CLI
-### Config Part
-Firstly config.json have to be configured
+### Setup
+Before you start using Gooz CLI, you need to do the setup process. This process is quite easy and the following process needs to be followed.
 ```
-{
-    "port": "COM3",
-    "username": "User1",
-    "workdir": "Workpath"
-}
+python3 goozcli.py setup
 ```
-These values will be changed by user
-
-### Config Part on CLI
-Config parameters can be changed via Gooz CLI commands
-```
-python3 gooz.py config 
-```
-or
-```
-python gooz.py config 
-```
-For changing specific config parameter,
-```
-python3 gooz.py config username
-```
-```
-python3 gooz.py config workdir 
-```
-```
-python3 gooz.py config port 
+At the initial installation stage, it will be sufficient to do the following.
+```python
+config.json file not found
+Need setup process     
+Example:
+python goozcli.py setup
+ERROR: Your device can not be reachable
+config.json file not found    
+Setup process has been started
+Please enter board port -> COM6
+Please enter username -> Gorki
+Please enter workdir path(OS folders path) -> C:\GoozOS
+Configuration JSON -> {'port': 'COM6', 'username': 'Gorki', 'workdir': 'C:\\GoozOS'} 
+✅  config.json has been changed!
+Setup has been done successfully
 ```
 
 ### Config Parameters Meanings
@@ -56,28 +47,26 @@ python3 gooz.py config port
 Work path is related with user. Gooz CLI takes your OS codes from workdir.
 
 ## Upload
-![Success Upload](https://github.com/gooz-project/gooz-cli/blob/main/uploadedGooz.PNG)<br/>
 Upload your codes to your MicroPython device<br/>
 **IMPORTANT : This process will upload everything from your MicroPython device**
 ```
-python3 gooz.py upload
+python3 goozcli.py upload
 ```
 or
 ```
-python3 gooz.py upload -y
+python3 goozcli.py upload -y
 ```
 
 
 ## Delete
-![Success Delete](https://github.com/gooz-project/gooz-cli/blob/main/deleteGooz.PNG)<br/>
 Delete your codes from your MicroPython device<br/>
 **IMPORTANT : This process will delete everything from your MicroPython device**
 ```
-python3 gooz.py delete
+python3 goozcli.py delete
 ```
 or
 ```
-python3 gooz.py delete -y
+python3 goozcli.py delete -y
 ```
 
 ## Planning Tasks

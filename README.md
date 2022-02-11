@@ -36,6 +36,7 @@ Configuration JSON -> {'port': 'COM6', 'username': 'Gorki', 'workdir': 'C:\\Gooz
 ✅  config.json has been changed!
 Setup has been done successfully
 ```
+After a successful setup, config.json will be visible in the directory where Gooz CLI is located.
 
 ### Config Parameters Meanings
 | Parameter | Value |
@@ -46,6 +47,31 @@ Setup has been done successfully
 
 Work path is related with user. Gooz CLI takes your OS codes from workdir.
 
+### Changing Config Parameters
+If you are working in a different development environment or for different situations, you can make changes to the config.json file.
+```bash
+python3 goozcli.py config
+```
+Ex Usage:
+```python
+DEBUG: Your device has been connected successfully
+Please enter board port -> COM6
+Please enter username -> Gorki
+Please enter workdir path(OS folders path) -> D:\Gooz\GoozNew
+Configuration JSON -> {'port': 'COM6', 'username': 'Gorki', 'workdir': 'D:\\Gooz\\GoozNew'} 
+✅  config.json has been changed!
+```
+
+## Viewing Files on the Board
+If you want to view the files inside your board after connecting it, you can use the command below.
+```
+python3 goozcli.py ls
+```
+Ex Output:
+```
+DEBUG: Your device has been connected successfully
+['/app', '/dev', '/docs', '/gooz_engine.py', '/lib', '/main.py', '/system']
+```
 ## Upload
 Upload your codes to your MicroPython device<br/>
 **IMPORTANT : This process will upload everything from your MicroPython device**

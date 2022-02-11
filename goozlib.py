@@ -145,7 +145,7 @@ class GoozCLI:
                 proc.wait()
                 tempf.seek(0)
                 output = tempf.read().decode("utf-8")
-            a = output.split("\n")
+            a = output.split("\r\n")
             f = open("./getfolder"+param,"w+",encoding="utf-8")
             for i in a:
                 f.write(i)

@@ -82,8 +82,6 @@ or
 ```
 python3 goozcli.py upload -y
 ```
-
-
 ## Delete
 Delete your codes from your MicroPython device<br/>
 **IMPORTANT : This process will delete everything from your MicroPython device**
@@ -94,7 +92,42 @@ or
 ```
 python3 goozcli.py delete -y
 ```
+## Convert Gooz Packages to JSON
+You can convert the packages you write into JSON files that can be read by Gooz OS via Gooz CLI.
+Ex:
+```
+python3 goozcli.py convert
+```
+Ex Output:
+```
+DEBUG: Your device has been connected successfully
+Please enter package name -> webgooz
+Is your package in app or another folder?
+If your package is under app folder please enter only 'd'       
+If your package is under another folder please enter folder path
+EXAMPLE: /mynewapp/newapp
+WARNING: Another folder must be under workdir
+Please enter folder -> d
+['gooz_web.py', 'manage.py']
+WARNING: These files convert, do you agree? [y,N] -> 
+```
+## Test Your Gooz OS
+Gooz OS included in the board can be tested via Gooz CLI. For this, test.py must be located in the folder where Gooz CLI is installed. The sample test file is in the repo.
+```
+python3 goozcli.py test
+```
+Ex Output:
+```
+DEBUG: ifconfig Test Success
+TEST DEBUG: curl http:example command
+ERROR: curl http:example Test Failed
+TEST DEBUG: shutdown command
 
+DEBUG: shutdown Test Success
+System will be shutdown
+RESULT: 9/10 Success Test
+Test process has been done
+```
 ## Planning Tasks
 - [ ] Management your codes which are in MicroPython device
 - [ ] Username and Password supporting

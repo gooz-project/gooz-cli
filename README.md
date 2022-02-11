@@ -128,6 +128,11 @@ System will be shutdown
 RESULT: 9/10 Success Test
 Test process has been done
 ```
+## Get Specific File
+You can pull any file you want from Gooz OS to your media via Gooz CLI.
+```
+python3 goozcli.py get [FILE_NAME]
+```
 ## Planning Tasks
 - [ ] Management your codes which are in MicroPython device
 - [ ] Username and Password supporting

@@ -1,4 +1,11 @@
 # Gooz CLI
+## New Features
+- Engine
+GoozOS has been rewritten with a brand new engine. Thus, it has been made more performance and dynamic. The engine can be viewed from the link here : https://github.com/gooz-project/goozengine
+- New Package Formula for New Engine
+Along with the changes in the engine, there were some differences in the manifest files required for package installation. All these glitches have been fixed in the new version of GoozCLI.
+- Backend Converter for WebGooz
+Thanks to the WebGooz package, you can now implement your IoT API applications with GoozOS. It has a number of features to simplify its complex and powerful structure and to benefit more clearly from its efficiency. One of them is that easy backend functions can be developed. The JSON files that will be needed can be developed with the new version of GoozCLI.
 ## Prerequisites
 - Adafruit-Ampy Module
 ### How To Install Prerequisites
@@ -132,6 +139,11 @@ Test process has been done
 You can pull any file you want from Gooz OS to your media via Gooz CLI.
 ```
 python3 goozcli.py get [FILE_NAME]
+```
+## WebGooz Backend Converter
+You can create backend manifests for WebGooz Package
+```shell
+python goozcli.py backend [BACKEND_PYTHON_FILE_PATH]
 ```
 ## Planning Tasks
 - [ ] Management your codes which are in MicroPython device

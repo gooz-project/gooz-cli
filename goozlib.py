@@ -173,9 +173,41 @@ class GoozCLI:
             print("\U00002705  \033[92mconfig.json has been changed!\033[0m")
         except:
             print("\U0000274C  \033[91mProcess can not be done!!\033[0m")
+    def webgooz_creator(self,filename):
+        backend_template = {"apis":[]}
+        backend_nvic = {"filename":"","codes":""}
+        f = open(filename,"r",encoding="utf-8")
+        lines = f.readlines()
+        for i in lines:
+            if "def" in i:
+                path = i[4:len(i)-4]
+                paths = path.split("_")
+                newPath = ""
+                for a in paths:
+                    newPath += "/"
+                    newPath += a
+                newPath += ".py"
+                backend_nvic["filename"] = newPath
+                newCodes = "def run():\n"
+                for codeLine in range(len(lines)):
+                    if i == lines[codeLine]:
+                        lineCounter = 1
+                        while True:
+                            if "def" in lines[codeLine+lineCounter] or "last" in lines[codeLine+lineCounter]:
+                                backend_nvic["codes"] = newCodes.replace("\n","backendlineflag")
+                                break
+                            elif not "def" in lines[codeLine+lineCounter]:
+                                newCodes += lines[codeLine+lineCounter]
+                                lineCounter += 1
+                        backend_template["apis"].append(backend_nvic)
+                        backend_nvic = {"filename":"","codes":""}
+        print(backend_template)
+        with open(filename[:-3]+".json", "w") as fp:
+            json.dump(backend_template, fp, indent=4)
+        f.close()
 
     def convert_package(self):
-        pkg_template = {"name":"","codes":"","managersnip":""}
+        pkg_template = {"name":"","codes":""}
         code_template = {"filename":"","code":""}
         cli_path = os.getcwd()
         os.chdir(self.workdir)
@@ -197,7 +229,7 @@ class GoozCLI:
                     print("\033[94mProcess is doing\033[0m")
                     codes_repo = []
                     for i in files:
-                        if i != "manage.py":
+                        if "." in i:
                             code_template["filename"] = i
                             f = open(i,"r",encoding="utf-8")
                             codes_file=f.readlines()
@@ -214,15 +246,6 @@ class GoozCLI:
                             code_template = {"filename":"","code":""}
                     pkg_template["codes"]=codes_repo
                     pkg_template["name"]=package_name
-                    f = open("manage.py","r",encoding="utf-8")
-                    manager_snip = f.readlines()
-                    manager_snip.insert(0,"pkglineflag")
-                    manager_snip[-1] = manager_snip[-1] + "pkglineflag"
-                    manager_new_array = []
-                    for i in manager_snip:
-                        manager_new_array.append(i.replace("\n","pkglineflag"))
-                    tmp_manager = "".join(manager_new_array)
-                    pkg_template["managersnip"] = tmp_manager
                     os.chdir(cli_path)
                     with open(package_name+".json", "w") as fp:
                         json.dump(pkg_template, fp, indent=4)

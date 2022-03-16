@@ -36,3 +36,5 @@ elif sys.argv[1] == "test":
     print("\033[93mTest process has been done\033[0m")
 elif sys.argv[1] == "setup":
     process.setup()
+elif sys.argv[1] == "backend":
+    process.webgooz_creator(sys.argv[2])
